@@ -7,7 +7,7 @@ import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/c
 import Users from './Components/User/Users';
 import { gql, useQuery } from '@apollo/client';
 import RoleList from './Components/Roles/RoleList';
-
+import { ChakraProvider } from '@chakra-ui/react';
 // const httpLink = new HttpLink({
 //   uri:  // replace with your GraphQL endpoint
 // });
@@ -19,16 +19,18 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <Router>
-      <ApolloProvider client={client}>
-        <Navbar/>
-        <Routes>
-          <Route path="/users" element={<Users/>}></Route>
-          <Route path="/roles" element={<RoleList/>}></Route>
-          <Route exact path="/" element={<Home/>}></Route>
-        </Routes>
-      </ApolloProvider>
-    </Router>
+    <ChakraProvider>
+      <Router>
+        <ApolloProvider client={client}>
+          <Navbar/>
+          <Routes>
+            <Route path="/users" element={<Users/>}></Route>
+            <Route path="/roles" element={<RoleList/>}></Route>
+            <Route exact path="/" element={<Home/>}></Route>
+          </Routes>
+        </ApolloProvider>
+      </Router>
+    </ChakraProvider>
   );
 }
 
