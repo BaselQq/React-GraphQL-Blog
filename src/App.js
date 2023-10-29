@@ -8,6 +8,7 @@ import Users from './Components/User/Users';
 import { gql, useQuery } from '@apollo/client';
 import RoleList from './Components/Roles/RoleList';
 import { ChakraProvider } from '@chakra-ui/react';
+import Login from './Components/Auth/Login';
 // const httpLink = new HttpLink({
 //   uri:  // replace with your GraphQL endpoint
 // });
@@ -25,6 +26,7 @@ function App() {
           <Navbar/>
           <Routes>
             <Route path="/users" element={<Users/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
             <Route path="/roles" element={<RoleList/>}></Route>
             <Route exact path="/" element={<Home/>}></Route>
           </Routes>
