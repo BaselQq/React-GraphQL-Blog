@@ -11,11 +11,6 @@ function App() {
     <Box>
       <Navbar/>
       <Home/>
-      {/* <Routes>
-        <Route path="/users" element={<Users/>}></Route>
-        <Route path="/roles" element={<RoleList/>}></Route>
-        <Route exact path="/" element={<Home/>}></Route>
-      </Routes> */}
     </Box>
   );
 }
