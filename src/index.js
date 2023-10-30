@@ -3,11 +3,47 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './Components/Home/Home';
+import Login from './Components/Auth/Login';
+import RoleList from './Components/Roles/RoleList';
+import ErrorPage from './error-page';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ChakraProvider } from '@chakra-ui/react';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/login",
+    element: <Login/>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/roles",
+    element: <RoleList/>,
+    errorElement: <ErrorPage/>
+  },
+]);
+
+const client = new ApolloClient({
+  uri: 'http://127.0.0.1:8000/graphql',
+  cache: new InMemoryCache(),
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider>
+      <ApolloProvider client={client}>
+        <RouterProvider router={router}>
+          <App/>
+        </RouterProvider>
+      </ApolloProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );
 
