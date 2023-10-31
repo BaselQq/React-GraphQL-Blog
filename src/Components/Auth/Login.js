@@ -24,9 +24,7 @@ const Login = () => {
         e.preventDefault();
         userActions.login(input.email, input.password).then((userData) => {
             if(!Object.keys(userData).includes("error")) {
-                // console.log(userData);
-                localStorage.setItem('user', userData);
-                // setAuthenticated(true);
+                console.log(userData);
                 navigate("/");
             } else {
                 console.log("Error by Login:", userData.error);

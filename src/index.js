@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './Components/Home/Home';
 import Login from './Components/Auth/Login';
 import RoleList from './Components/Roles/RoleList';
 import ErrorPage from './error-page';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
+import { setContext } from '@apollo/client/link/context';
 import theme from './theme';
 import '@fontsource/itim'
 
@@ -31,8 +31,22 @@ const router = createBrowserRouter([
   },
 ]);
 
+const httpLink = createHttpLink({
+  uri: 'http://127.0.0.1:8000/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ""
+    }
+  }
+});
+
 const client = new ApolloClient({
-  uri: 'http://127.0.0.1:8000/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
