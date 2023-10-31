@@ -1,27 +1,41 @@
+import { Box, Button, Center, Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import userActions from "../../helpers/userActions";
 
 const Navbar = () => {
+    const user = localStorage.getItem('user');
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        userActions.logout();
+        localStorage.removeItem("user");
+        navigate("/");
+    }
+
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/users">Users</Link>
-                </li>
-                <li>
-                    <Link to="/login">Login</Link>
-                </li>
-                <li>
-                    <Link to="/roles">Roles</Link>
-                </li>
-                <li>
-                    <Link to="/tasks">Tasks</Link>
-                </li>
-            </ul>
-        </nav>
+        <Box>
+            <Flex h={16} bg={"#EEDECC"}>
+                <Center w="100px">
+                    <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/">Home</Link>
+                </Center>
+                <Center w="100px">
+                    <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/register">Register</Link>
+                </Center>
+                <Center w="100px">
+                    <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/login">Sign In</Link>
+                </Center>
+                <Center w="100px">
+                    <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/about">About</Link>
+                </Center>
+                <Center w="100px">
+                    <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/roles">Roles (t)</Link>
+                </Center>
+                <Center w="100px">
+                    { user && <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} onClick={handleLogout}>Logout</Link>}
+                </Center>
+            </Flex>
+        </Box>
     );
 }
 

@@ -8,10 +8,10 @@ import { Box } from '@chakra-ui/react';
 
 function App() {
   return (
-    <Box>
-      <Navbar/>
-      <Home/>
-    </Box>
+      <Box>
+        <Navbar/>
+        <Home/>
+      </Box>
   );
 }
 

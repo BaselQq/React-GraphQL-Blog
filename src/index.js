@@ -10,6 +10,8 @@ import RoleList from './Components/Roles/RoleList';
 import ErrorPage from './error-page';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme';
+import '@fontsource/itim'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,7 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <ApolloProvider client={client}>
         <RouterProvider router={router}>
           <App/>
