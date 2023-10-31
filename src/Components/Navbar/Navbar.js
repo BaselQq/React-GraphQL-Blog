@@ -19,12 +19,16 @@ const Navbar = () => {
                 <Center w="100px">
                     <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/">Home</Link>
                 </Center>
+                { !user && 
                 <Center w="100px">
                     <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/register">Register</Link>
                 </Center>
-                <Center w="100px">
-                    <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/login">Sign In</Link>
-                </Center>
+                }
+                { !user && 
+                    <Center w="100px">
+                        <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/login">Sign In</Link>
+                    </Center>
+                }
                 <Center w="100px">
                     <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/about">About</Link>
                 </Center>

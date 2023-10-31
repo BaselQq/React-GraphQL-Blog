@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div>
             <div>
-                <h1>Welcome to your Task Manager</h1>
+                <h1>Welcome to ya fulan blog</h1>
             </div>
         </div>
     );
