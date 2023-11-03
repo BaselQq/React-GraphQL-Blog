@@ -15,7 +15,8 @@ function PostCard() {
             <CardHeader
                 boxShadow="lg"
                 h={"70px"}
-                pl={"15px"}
+                pl={"10px"}
+                pt={1}
                 roundedBottom="3rem"
             >
                 POST TITLE IN CAPITAL LETTERS
