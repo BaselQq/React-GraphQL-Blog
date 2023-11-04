@@ -12,15 +12,15 @@ function PostList() {
 
     return (
         <SimpleGrid 
-                        spacing={12} 
-                        templateColumns='repeat(3, minmax(250px, 1fr))' 
-                        mt={7} 
-                        mb={9}
-                    >
-                    {data.posts.map((post) => (
-                       <PostCard key={post.id} post={post}/>
-                       ))}
-                </SimpleGrid>
+                spacing={12} 
+                templateColumns='repeat(3, minmax(250px, 1fr))' 
+                mt={7} 
+                mb={9}
+            >
+            {data.posts.map((post) => (
+                <PostCard key={post.id} post={post}/>
+                ))}
+        </SimpleGrid>
     );
 }
 
