@@ -7,7 +7,7 @@ import GET_POSTS from "./List";
 function PostList({ PassedData }) {
     const { loading, error, data } = new useQuery(GET_POSTS);
 
-    console.log(PassedData);
+    // console.log(PassedData);
 
     if (error) return `Error ${error.message}`;
     if (loading) return "Loading..."
@@ -21,7 +21,7 @@ function PostList({ PassedData }) {
             >
             {PassedData ?
              PassedData.posts.map((post) => (
-                <PostCard key={PassedData.id} post={PassedData}/>
+                <PostCard key={post.id} post={post}/>
             ))
             :
             data.posts.map((post) => (

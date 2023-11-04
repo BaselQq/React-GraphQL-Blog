@@ -1,11 +1,11 @@
 import { Box, Select, Text } from "@chakra-ui/react";
 import React from "react";
 
-function CategoryList({ data }) {
+function CategoryList({ data, recieveCategoryId }) {
 
     return (
         <Box>
-            <Select placeholder="Select Category">
+            <Select onChange={(e) => recieveCategoryId(e.target.value)} placeholder="Select Category">
             {data.categories.map((Category) => (
                 <option value={Category.id}>{Category.title}</option>
             ))}
