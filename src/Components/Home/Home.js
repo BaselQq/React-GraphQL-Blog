@@ -18,8 +18,6 @@ const Home = () => {
         }
     });
 
-    console.log(PostsData);
-
     if (CategoriesError) return `Error by Categories Query! ${CategoriesError.message}`;
     if (CategoriesLoading) return "Loading...";
     
