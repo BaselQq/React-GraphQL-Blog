@@ -3,7 +3,6 @@ import axios from "axios";
 import { Form, Navigate, useNavigate } from "react-router-dom";
 import { Box, Button, Center, Flex, FormControl, Image, Input } from "@chakra-ui/react";
 import userActions from "../../helpers/userActions";
-import Navbar from "../Navbar/Navbar";
 import loginImage from './Login-Photo.png';
 
 const Login = () => {

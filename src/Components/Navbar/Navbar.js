@@ -33,9 +33,9 @@ const Navbar = () => {
                 <Center w="100px">
                     <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/about">About</Link>
                 </Center>
-                <Center w="100px">
+                {/* <Center w="100px">
                     <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} to="/roles">Roles (t)</Link>
-                </Center>
+                </Center> */}
                 <Center w="100px">
                     { user && <Link fontWeight="" _hover={{bg: "#FEFBF5"}} bg={"EEDECC"} onClick={handleLogout}>Logout</Link>}
                 </Center>

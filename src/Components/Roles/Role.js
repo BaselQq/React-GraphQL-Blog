@@ -1,7 +1,7 @@
 import React from "react";
 
 function Role({UserRole}) {
-    console.log(UserRole);
+    // console.log(UserRole);
 
     return (
         <div>

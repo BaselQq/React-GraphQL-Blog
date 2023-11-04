@@ -1,10 +1,9 @@
 import React from "react";
 import { Image, Card, CardHeader } from "@chakra-ui/react";
 
-
-function PostCard() {
+function PostCard({ post }) {
     return (
-        <Card variant={"unstyled"} maxW="sm">
+        <Card key={post.id} variant={"unstyled"} maxW="sm">
             <Image
                 boxShadow="lg"
                 roundedTop="3rem"
@@ -19,9 +18,7 @@ function PostCard() {
                 pt={1}
                 roundedBottom="3rem"
             >
-                POST TITLE IN CAPITAL LETTERS
-                POST TITLE IN CAPITAL LETTERS
-                POST TITLE IN CAPITAL LETTERS
+                {post.title}
             </CardHeader>
         </Card>
     )
