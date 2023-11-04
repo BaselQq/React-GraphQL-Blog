@@ -1,11 +1,13 @@
-import { SimpleGrid } from "@chakra-ui/react";
-import React from "react";
+import { Button, SimpleGrid } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import PostCard from "./PostCard";
 import { useQuery } from "@apollo/client";
 import GET_POSTS from "./List";
 
-function PostList() {
+function PostList({ PassedData }) {
     const { loading, error, data } = new useQuery(GET_POSTS);
+
+    console.log(PassedData);
 
     if (error) return `Error ${error.message}`;
     if (loading) return "Loading..."
@@ -17,9 +19,15 @@ function PostList() {
                 mt={7} 
                 mb={9}
             >
-            {data.posts.map((post) => (
+            {PassedData ?
+             PassedData.posts.map((post) => (
+                <PostCard key={PassedData.id} post={PassedData}/>
+            ))
+            :
+            data.posts.map((post) => (
                 <PostCard key={post.id} post={post}/>
-                ))}
+            ))                
+        }
         </SimpleGrid>
     );
 }
