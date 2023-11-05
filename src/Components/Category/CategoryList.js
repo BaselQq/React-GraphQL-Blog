@@ -5,7 +5,7 @@ function CategoryList({ data, recieveCategoryId }) {
 
     return (
         <Box>
-            <Select onChange={(e) => recieveCategoryId(e.target.value)} placeholder="Select Category">
+            <Select w="240px" onChange={(e) => recieveCategoryId(e.target.value)} placeholder="Select Category">
             {data.categories.map((Category) => (
                 <option value={Category.id}>{Category.title}</option>
             ))}
