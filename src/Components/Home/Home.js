@@ -9,15 +9,16 @@ import GET_POSTS_BY_CATEGORY_ID from "../Post/ListPostsByCategory/Index";
 
 const Home = () => {
     const [categoryId, setCategoryId] = useState(28);
-    const [limitPosts, setLimitPosts ] = useState(6);
+    const [offsetPosts, setOffsetPosts ] = useState(0);
     const { loading: CategoriesLoading, error: CategoriesError, data: CategoriesData } = new useQuery(GET_CATEGORIES);
-    const { loading: PostsLoading, error: PostsError, data: PostsData } = new useQuery(GET_POSTS_BY_CATEGORY_ID, {
+    const { loading: PostsLoading, error: PostsError, data: PostsData, fetchMore: fetchMorePosts } = new useQuery(GET_POSTS_BY_CATEGORY_ID, {
         variables:
         {
             "categoryId": parseInt(categoryId),
-            "offset": 0,
-            "limit": limitPosts
-        }
+            "offset": offsetPosts,
+            "limit": 6,
+        },
+        fetchPolicy: 'cache-and-network', 
     });
 
     if (CategoriesError) return `Error by Categories Query! ${CategoriesError.message}`;
@@ -30,6 +31,22 @@ const Home = () => {
         setCategoryId(categoryId);
     }
 
+    const loadMorePosts = () => {
+        const newOffset = PostsData.posts.length + 1;
+        fetchMorePosts({
+          variables: {
+            limit: newOffset,
+            offset: 0
+          },
+          updateQuery: (prev, { fetchMoreResult }) => {
+            if (!fetchMoreResult) return prev;
+            return {
+              posts: [...fetchMoreResult.posts],
+            };
+          },
+        });
+      };      
+
     return (
         <Box>
             <Box>
@@ -39,7 +56,7 @@ const Home = () => {
                 <PostList PassedData={PostsData}/>
             </Center>
             <Center p={12}>
-                <Button onClick={() => setLimitPosts(limitPosts + 1)} bg={"#DDA15E"} boxShadow="xl">Load more</Button>
+                <Button onClick={loadMorePosts} bg={"#DDA15E"} boxShadow="xl">Load more</Button>
             </Center>
             <Footer/>
         </Box>
