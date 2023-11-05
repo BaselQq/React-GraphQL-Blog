@@ -12,6 +12,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { setContext } from '@apollo/client/link/context';
 import theme from './theme';
 import '@fontsource/itim'
+import { offsetLimitPagination } from '@apollo/client/utilities';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,15 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          feed: offsetLimitPagination()
+        }
+      }
+    }
+  }),
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
