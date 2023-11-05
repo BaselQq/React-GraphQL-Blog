@@ -9,7 +9,7 @@ import GET_POSTS_BY_CATEGORY_ID from "../Post/ListPostsByCategory/Index";
 
 const Home = () => {
     const [categoryId, setCategoryId] = useState(28);
-    const [limitPosts, setLimitPosts ] = useState(2);
+    const [limitPosts, setLimitPosts ] = useState(6);
     const { loading: CategoriesLoading, error: CategoriesError, data: CategoriesData } = new useQuery(GET_CATEGORIES);
     const { loading: PostsLoading, error: PostsError, data: PostsData } = new useQuery(GET_POSTS_BY_CATEGORY_ID, {
         variables:
