@@ -13,6 +13,7 @@ import { setContext } from '@apollo/client/link/context';
 import theme from './theme';
 import '@fontsource/itim'
 import { offsetLimitPagination } from '@apollo/client/utilities';
+import IsAuthenticated from "./Components/ProtectedRoute/IsAuthenticated";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/roles",
-    element: <RoleList/>,
+    element: 
+    <IsAuthenticated>
+      <RoleList/>
+    </IsAuthenticated>,
     errorElement: <ErrorPage/>
   },
 ]);
