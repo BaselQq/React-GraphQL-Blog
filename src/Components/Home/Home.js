@@ -32,7 +32,7 @@ const Home = () => {
     }
 
     const loadMorePosts = () => {
-        const newOffset = PostsData.posts.length + 1;
+        const newOffset = PostsData.posts.length + 6;
         fetchMorePosts({
           variables: {
             limit: newOffset,
