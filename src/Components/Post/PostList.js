@@ -7,8 +7,6 @@ import GET_POSTS from "./List";
 function PostList({ PassedData }) {
     const { loading, error, data } = new useQuery(GET_POSTS);
 
-    // console.log(PassedData);
-
     if (error) return `Error ${error.message}`;
     if (loading) return "Loading..."
 

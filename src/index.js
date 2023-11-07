@@ -14,6 +14,7 @@ import theme from './theme';
 import '@fontsource/itim'
 import { offsetLimitPagination } from '@apollo/client/utilities';
 import IsAuthenticated from "./Components/ProtectedRoute/IsAuthenticated";
+import NewPost from "./Components/Post/NewPost";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
     </IsAuthenticated>,
     errorElement: <ErrorPage/>
   },
+  {
+    path: "/newpost",
+    element:
+    <IsAuthenticated>
+      <NewPost/>
+    </IsAuthenticated>,
+    errorElement: <ErrorPage/>
+  }
 ]);
 
 const httpLink = createHttpLink({
