@@ -60,7 +60,7 @@ const blockTypeToBlockName = {
   h4: "Heading",
   h5: "Heading",
   ol: "Numbered List",
-  paragraph: "Normal",
+  // paragraph: "Normal",
   quote: "Quote",
   ul: "Bulleted List"
 };
