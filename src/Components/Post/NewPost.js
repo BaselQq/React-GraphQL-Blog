@@ -3,28 +3,46 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import CategoryList from "../Category/CategoryList";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import GET_CATEGORIES from "../Category/List";
 import { Form } from "react-router-dom";
+import Editor  from "../../Components/Editor/Editor"
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import CREATE_NEW_CATEGORY_BY_ID from "./CreateNewCategoryById";
 
 function NewPost() {
     const [ categoryId, setCategoryId ] = useState(null);
     const [ newCategoryName, setNewCategoryName ] = useState("");
+    const [ htmlContent, setHtmlContent ] = useState();
 
-    const { loading: CategoriesLoading, error: CategoriesError, data: CategoriesData } = useQuery(GET_CATEGORIES, {
-        variables:
-        {
-            "categoryId": {categoryId} && parseInt(categoryId)
-        }
-    });
+    const recieveHtmlContent = (html) => {
+        setHtmlContent(html);
+        console.log(htmlContent);
+    }
+
+    const { loading: CategoriesLoading, error: CategoriesError, data: CategoriesData, refetch: refetchCategoriesData } = useQuery(GET_CATEGORIES);
+
+    const recieveCategoryId = (categoryId) => {
+        setCategoryId(categoryId);
+    }
+
+    const [addCategoryMutation, { loading: addCategoryLoading, error: addCategoryError, data: addCategoryData }] = useMutation(CREATE_NEW_CATEGORY_BY_ID)
+
+    if (addCategoryLoading) return "Loading...";
+    if (addCategoryError) return `Error ${addCategoryError.message}`;
 
     const handleInputNewCategoryName = (e) => {
         setNewCategoryName(e.target.value);
-        console.log(newCategoryName);
     }
 
     if (CategoriesLoading) return "Loading...";
     if (CategoriesError) return `Error ${CategoriesError.message}`; 
+
+    function addNewCategory() {
+        addCategoryMutation({ variables: { title: newCategoryName }});
+        refetchCategoriesData();
+        setNewCategoryName(null);
+    }
 
     return (
         <Box>
@@ -38,7 +56,7 @@ function NewPost() {
                             templateColumns='repeat(4, 1fr)'
                         >
                             <GridItem>
-                                <CategoryList data={CategoriesData}/>
+                                <CategoryList recieveCategoryId={recieveCategoryId} data={CategoriesData}/>
                             </GridItem>
                             <GridItem>
                                 <Center>
@@ -50,7 +68,7 @@ function NewPost() {
                             </GridItem>
                             <GridItem>
                             <Box pl={3}>
-                                <Button bg={"#DDA15E"} boxShadow="xl">Add</Button>
+                                <Button onClick={addNewCategory} bg={"#DDA15E"} boxShadow="xl">Add</Button>
                             </Box>
                             </GridItem>
                         </Grid>        
@@ -73,8 +91,14 @@ function NewPost() {
                         </Center>
                         
                     </FormControl>
-                </Form>
                 
+                <Editor recieveHtmlContent={recieveHtmlContent} />
+
+            <Center p="40px">
+                <Button                    
+                >Submit</Button>
+            </Center>
+                </Form>
             <Footer/>
         </Box>
     );
