@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, FormControl, Grid, GridItem, Input, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Grid, GridItem, Input, SimpleGrid, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -7,7 +7,6 @@ import { useMutation, useQuery } from "@apollo/client";
 import GET_CATEGORIES from "../Category/List";
 import { Form } from "react-router-dom";
 import Editor  from "../../Components/Editor/Editor"
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import CREATE_NEW_CATEGORY_BY_ID from "./CreateNewCategoryById";
 import CREATE_NEW_POST from "./CreateNewPost";
 
@@ -103,8 +102,11 @@ function NewPost() {
                             POST PHOTO Uploader // ToDo
                         </Box>
                     </Center>                                        
-                <Editor recieveHtmlContent={recieveHtmlContent} />
-
+                <Center>
+                    <Box boxShadow="lg" w="900px">
+                        <Editor recieveHtmlContent={recieveHtmlContent} />
+                    </Box>
+                </Center>
             <Center p="40px">
                 <Button   
                     onClick={() => addNewPostMutation({

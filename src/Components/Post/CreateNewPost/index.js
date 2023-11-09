@@ -2,10 +2,10 @@ import { gql } from "@apollo/client";
 
 const CREATE_NEW_POST = gql`
 mutation CreatePost(
-        $categoryId: Int,
-        $title: String,
+        $categoryId: Int!,
+        $title: String!,
         $description: String,
-        $postContent: String,
+        $postContent: String!,
         $file: Upload
     ) {
     createPost(

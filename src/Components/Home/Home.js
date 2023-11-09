@@ -8,7 +8,7 @@ import { useQuery } from "@apollo/client";
 import GET_POSTS_BY_CATEGORY_ID from "../Post/ListPostsByCategory/Index";
 
 const Home = () => {
-    const [categoryId, setCategoryId] = useState(28);
+    const [categoryId, setCategoryId] = useState(null);
     const [offsetPosts, setOffsetPosts ] = useState(0);
     const { loading: CategoriesLoading, error: CategoriesError, data: CategoriesData } = new useQuery(GET_CATEGORIES);
     const { loading: PostsLoading, error: PostsError, data: PostsData, fetchMore: fetchMorePosts } = new useQuery(GET_POSTS_BY_CATEGORY_ID, {
@@ -45,7 +45,7 @@ const Home = () => {
             };
           },
         });
-      };      
+      };
 
     return (
         <Box>
