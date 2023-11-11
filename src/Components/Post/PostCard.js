@@ -1,9 +1,16 @@
 import React from "react";
 import { Image, Card, CardHeader } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function PostCard({ post }) {
+    const navigate = useNavigate();
+
+    function routeToSpecificPost() {
+        navigate(`/post/${post.id}`);
+    }
+
     return (
-        <Card key={post.id} variant={"unstyled"} maxW="sm">
+        <Card _hover={{cursor:"pointer"}} onClick={routeToSpecificPost} key={post.id} variant={"unstyled"} maxW="sm">
             <Image
                 boxShadow="lg"
                 roundedTop="3rem"

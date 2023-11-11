@@ -15,6 +15,7 @@ import '@fontsource/itim'
 import { offsetLimitPagination } from '@apollo/client/utilities';
 import IsAuthenticated from "./Components/ProtectedRoute/IsAuthenticated";
 import NewPost from "./Components/Post/NewPost";
+import PostContent from './Components/Post/PostContent';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
     <IsAuthenticated>
       <NewPost/>
     </IsAuthenticated>,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: "/post/:postId",
+    element: <PostContent/>,
     errorElement: <ErrorPage/>
   }
 ]);
