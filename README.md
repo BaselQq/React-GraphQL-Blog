@@ -2,17 +2,17 @@
 https://github.com/BaselQq/Laravel-GraphQL-Blog
 
 # App
-## Add new Category
-![Add new category](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/49cc6133-f044-4986-84bb-3871fd721df9)
-
-## Add new Post
-![Add new post](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/80fcf9f0-26dc-41c3-bc3e-e1205117d3d3)
+## View Blog and select Category
+![View blog and select category](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/12f7b2cc-4097-41ec-b8c1-d0f379ebc3a6)
 
 ## Sign in
-![Sign in](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/ed1d280f-3216-4505-8e91-cdb32364cef8)
+![Sign in](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/216a862b-a025-4f15-abc1-1353fcdb57e9)
 
-## View Blog and select Category
-![View blog and select category](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/6ef5ea53-37e7-4beb-9477-e1092d439dea)
+## Add new Category
+![Add new category](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/050f19eb-32c2-437a-b568-609497b9bd1b)
+
+## Add new Post
+![Add new post](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/53139fc4-756e-4b10-b69d-13db08944968)
 
 # Resources
 https://ui.dev/react-router-protected-routes-authentication
