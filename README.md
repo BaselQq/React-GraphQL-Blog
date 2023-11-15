@@ -2,7 +2,7 @@
 https://github.com/BaselQq/Laravel-GraphQL-Blog
 
 # App
-## Add new Category:
+## Add new Category
 ![Add new category](https://github.com/BaselQq/React-GraphQL-Blog/assets/73541125/49cc6133-f044-4986-84bb-3871fd721df9)
 
 ## Add new Post
